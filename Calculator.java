@@ -1,29 +1,39 @@
-import java.util.Scanner;
 public class Calculator {
-   public static void main(String[] args) {
-      double num1;
-      double num2;
-      double ans;
-      char op;
-      Scanner reader = new Scanner(System.in);
-      System.out.print("Enter two numbers: ");
-      num1 = reader.nextDouble();
-      num2 = reader.nextDouble();
-      System.out.print("\nEnter an operator (+, -, *, /): ");
-      op = reader.next().charAt(0);
-      switch(op) {
-         case '+': ans = num1 + num2;
-            break;
-         case '-': ans = num1 - num2;
-            break;
-         case '*': ans = num1 * num2;
-            break;
-         case '/': ans = num1 / num2;
-            break;
-      default: System.out.printf("Error! Enter correct operator");
-         return;
-      }
-      System.out.print("\nThe result is given as follows:\n");
-      System.out.printf(num1 + " " + op + " " + num2 + " = " + ans);
-   }
+
+    // Static variables to hold the numbers for calculation
+    private static double num1 = 25.0;
+    private static double num2 = 5.0;
+
+    // Static method for addition
+    public static double add() {
+        return num1 + num2;
+    }
+
+    // Static method for subtraction
+    public static double subtract() {
+        return num1 - num2;
+    }
+
+    // Static method for multiplication
+    public static double multiply() {
+        return num1 * num2;
+    }
+
+    // Static method for division
+    public static double divide() {
+        if (num2 != 0) {
+            return num1 / num2;
+        } else {
+            System.out.println("Error: Division by zero is not allowed.");
+            return Double.NaN; // Not a Number
+        }
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Static Calculator Results:");
+        System.out.println("Addition: " + add());
+        System.out.println("Subtraction: " + subtract());
+        System.out.println("Multiplication: " + multiply());
+        System.out.println("Division: " + divide());
+    }
 }
